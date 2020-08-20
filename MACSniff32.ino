@@ -39,7 +39,7 @@ void sniffer(void* buf, wifi_promiscuous_pkt_type_t type) {
   WifiMgmtHdr *wh = (WifiMgmtHdr*)p->payload;
   len -= sizeof(WifiMgmtHdr);
   if (len < 0) return;
-  String packet;String packet2;
+  String packet;
   String mac;
   String info;
   int fctl = ntohs(wh->fctl);
@@ -101,8 +101,8 @@ void showMyMACs(){ // show the MACs that are on both macList and macList2.
       for(int j=0;j<maxMacs2;j++){
         if(macList[i][0] == macList2[j][1]){
           counter += 1;
-          res += (String(counter) +  ". MAC=" + macList[i][0] + "  Channel=" + macList[i][2] + "  Timer=" + macList[i][1] + "\r\n");
-          Serial.print("\r\n"+(String(counter) +  ". MAC=" + macList[i][0] + "  Channel=" + macList[i][2] + "  Timer=" + macList[i][1] + "\r\n"));
+          res += (String(counter) +  ". MAC=" + macList[i][0] + "  ALIAS=" + macList2[j][0] + "  Channel=" + macList[i][2] + "  Timer=" + macList[i][1] + "\r\n");
+          Serial.print("\r\n"+(String(counter) +  ". MAC=" + macList[i][0] + "  ALIAS=" + macList2[j][0] + "  Channel=" + macList[i][2] + "  Timer=" + macList[i][1] + "\r\n"));
           //digitalWrite(LED, HIGH);
         }
       }
